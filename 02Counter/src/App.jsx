@@ -6,13 +6,20 @@ function App() {
   //let counter = 15;
   
   const addValue = () => {
-    if(counter < 20) counter = counter + 1;
-    setCounter(counter)
+    // if(counter < 20) counter = counter + 1;    // HM
+    // setCounter(counter)   
+
+    // Interview Part 
+     setCounter((prevCounter) => prevCounter + 1)
+     setCounter((prevCounter) => prevCounter + 1)
+     setCounter((prevCounter) => prevCounter + 1)
+     setCounter((prevCounter) => prevCounter + 1)
   }
 
   const removeValue = () => {
-    if (counter != 0 ) counter = counter - 1
-    setCounter(counter)
+    // if (counter != 0 ) counter = counter - 1    // HM
+    // setCounter(counter)
+    setCounter(counter - 1)
   }
 
   return (
