@@ -34,3 +34,8 @@ Projects are added progressively, starting with basic applications and moving to
 - React Router
 - Redux Toolkit
 - Appwrite
+
+## 🛠️ API for currency converter
+https://latest.currency-api.pages.dev/v1/currencies/usd.json
+
+https://latest.currency-api.pages.dev/v1/currencies/inr.json
