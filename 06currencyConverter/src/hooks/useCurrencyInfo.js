@@ -1,0 +1,16 @@
+import { useEffect, useState } from "react";
+
+function useCurrencyInfo(currency){     // custom hook is related to currency
+         const [data, setData] = useState({})
+         useEffect(() => {
+                  fetch(`https://latest.currency-api.pages.dev/v1/currencies/${currency}.json`)
+                  .then((res) => res.json())
+                  .then((res) => setData(res[currency]))
+                  //.catch("Data not found or api is not executed");
+                  //console.log(data);
+         }, [])
+         //console.log(data);
+         return data;
+}
+
+export default useCurrencyInfo;
