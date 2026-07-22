@@ -47,8 +47,8 @@ function App() {
                                 label="From"
                                 amount={amount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setAmount(currency)}
-                                selectCurrency='from'
+                                onCurrencyChange={(currency) => setFrom(currency)} // overriding usestate("inr") value to updated value
+                                selectCurrency={from}
                                 onAmountChange={(amount) => setAmount(amount)}
                             />
                         </div>
@@ -66,14 +66,13 @@ function App() {
                                 label="To"
                                 amount={convertedAmount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setFrom(currency)}
-                                selectCurrency='to'
+                                onCurrencyChange={(currency) => setTo(currency)}  // overriding usestate("inr") value to updated value
+                                selectCurrency={to}   // selecting default value from state
                                 amountDisable
                             />
                         </div>
                         <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
                             Convert
-                            
                         </button>
                     </form>
                 </div>

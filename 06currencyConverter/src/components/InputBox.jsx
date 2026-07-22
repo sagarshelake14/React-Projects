@@ -26,7 +26,7 @@ function InputBox({
                     type="number"
                     placeholder="Amount"
                     value={amount}
-                    onChange={(e) => onAmountChange && onAmountChange((e.target.value))}
+                    onChange={(e) => onAmountChange && onAmountChange(e.target.value)}
                     disabled={amountDisable}
                 />
             </div>
@@ -37,15 +37,17 @@ function InputBox({
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     disabled={currencyDisable}
                     value={selectCurrency}
-                    onChange={(e) => onCurrencyChange && onCurrencyChange((e.target.value))}
+                    onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
                 >
-                   
+
                   {
-                           currencyOptions.map((currency) => {
-                                    <option value={currency} key={currency}>
+                    // when {} are in callback function then return keyword is must => explicit return 
+                    // But {} is not in callback function then return all auto  => implicit return
+                           currencyOptions.map((currency) => 
+                                    <option value={currency} key={currency}>   
                                              {currency}
                                     </option>
-                           })
+                           )
                   }
                 </select>
             </div>
