@@ -8,14 +8,16 @@ function App() {
     const [to, setTo] = useState('inr');
     const [convertedAmount, setConvertedAmount] = useState(0);
 
-    const currency = useCurrencyInfo(from);
-
-    const options = Object.keys(currency);
-   // console.log(options);
+    const currencyInfo = useCurrencyInfo(from);  //use of custom hook
     
+    const options = Object.keys(currencyInfo);
+    //console.log(options);
+    
+  // console.log(currencyInfo[options]);
+   
 
     const convert = () => {
-        setConvertedAmount(amount * Object.values(currency))
+        setConvertedAmount(amount * currencyInfo[to])
     }
 
     const swap = () => {
@@ -44,15 +46,17 @@ function App() {
                             <InputBox
                                 label="From"
                                 amount={amount}
-                                onAmountChange={from}
                                 currencyOptions={options}
+                                onCurrencyChange={(currency) => setAmount(currency)}
+                                selectCurrency='from'
+                                onAmountChange={(amount) => setAmount(amount)}
                             />
                         </div>
                         <div className="relative w-full h-0.5">
                             <button
                                 type="button"
                                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
-                                
+                                onClick={swap}
                             >
                                 swap
                             </button>
@@ -60,11 +64,16 @@ function App() {
                         <div className="w-full mt-1 mb-4">
                             <InputBox
                                 label="To"
-                                
+                                amount={convertedAmount}
+                                currencyOptions={options}
+                                onCurrencyChange={(currency) => setFrom(currency)}
+                                selectCurrency='to'
+                                amountDisable
                             />
                         </div>
                         <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
-                            Convert 
+                            Convert
+                            
                         </button>
                     </form>
                 </div>

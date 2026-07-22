@@ -8,7 +8,7 @@ function useCurrencyInfo(currency){     // custom hook is related to currency
                   .then((res) => setData(res[currency]))
                   //.catch("Data not found or api is not executed");
                   //console.log(data);
-         }, [])
+         }, [currency])
          //console.log(data);
          return data;
 }
