@@ -14,6 +14,8 @@ function App() {
     //console.log(options);
     
   // console.log(currencyInfo[options]);
+
+  
    
 
     const convert = () => {
@@ -49,7 +51,17 @@ function App() {
                                 currencyOptions={options}
                                 onCurrencyChange={(currency) => setFrom(currency)} // overriding usestate("inr") value to updated value
                                 selectCurrency={from}
-                                onAmountChange={(amount) => setAmount(amount)}
+                                onAmountChange={(amount) => {
+                                    //setAmount(amount)
+                                    if(amount === ''){
+                                        setAmount('0');
+                                        return;
+                                    }
+                                    const numericValue = parseFloat(amount);
+                                    if (numericValue >= 0) {
+                                            setAmount(numericValue);
+                                    }
+                                }}
                             />
                         </div>
                         <div className="relative w-full h-0.5">
